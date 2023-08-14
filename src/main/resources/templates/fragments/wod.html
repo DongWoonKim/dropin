@@ -5,21 +5,27 @@
     text-align: center;
   }
   .card {
+    font-size: 3em;
+    padding: 5px;
+    box-sizing: border-box;
     background-color: #fff;
     border-radius: 2px;
     display: inline-block;
     width: 97%;
-    height: 40px;
-    margin-bottom: 3px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin-bottom: 20px;
+    box-shadow: 0 1px 9px rgba(0,0,0,0.12), 0 4px 6px rgba(0,0,0,0.24);
+  }
+  .wod-font {
+    font-size: 2.5em;
   }
 </style>
 
 <script>
   let addWod = () => {
 
-    let wodText = $('#wodText').val();
-    $('#wodItem').append("<div class='card'>"+ wodText + "</div>");
+    let wodText = $('#wodText');
+    $('#wodItem').append("<div class='card'>"+ wodText.val() + "</div>");
+    wodText.val('');
 
   }
 </script>
@@ -28,11 +34,11 @@
   <div id="main-wod-cont">
     <!--  date 날짜  -->
     <div>
-      <input type="date">
+      <input class="wod-font" type="date">
     </div>
     <!--  wod 종류  -->
     <div>
-      <select>
+      <select class="wod-font">
         <option value="">For time</option>
         <option value="">Time cap</option>
         <option value="" selected>AMRAP</option>
@@ -42,12 +48,12 @@
     <!--  기록  -->
     <div>
       <!--   입력   -->
-      <div id="wodItem">
+      <div id="wodItem" style="margin-top: 20px; margin-bottom: 20px;">
 
       </div>
 
-      <input id="wodText" type="text" >
-      <button onclick="addWod()">추가</button>
+      <input id="wodText" type="text" class="wod-font">
+      <button class="wod-font" onclick="addWod()">추가</button>
       <!--   사진   -->
 
     </div>

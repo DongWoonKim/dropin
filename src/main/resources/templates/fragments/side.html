@@ -3,10 +3,11 @@
 
 <style>
   .ico.ico-bars {
-    margin:5px;
+    margin-left:5px;
+    margin-top: 20px;
     display: block;
-    width: 40px;
-    height: 30px;
+    width: 70px;
+    height: 50px;
     position: relative;
     cursor: pointer;
   }
@@ -16,7 +17,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 5px;
+    height: 10px;
     background-color: white;
     transition: top 0.2s, bottom 0.2s, transform 0.3s cubic-bezier(0.585, -0.6, 0.43, 1.65), visibility 0s .3s;
   }
@@ -48,13 +49,13 @@
   .ico.ico-bars.active div:first-child {
     margin-left: 7px;
     top: -2px;
-    transform: rotate(50deg);
+    transform: rotate(42deg);
   }
 
   .ico.ico-bars.active div:last-child {
     margin-left: 7px;
     bottom: -2px;
-    transform: rotate(-50deg);
+    transform: rotate(-42deg);
   }
 
   .ico.ico-bars.active div:nth-child(2) {
@@ -70,7 +71,7 @@
     position:fixed;
     top:0;
     left:0px;
-    width:50px;
+    width:80px;
     height:100%;
     background-color:#7AC3CC;
     box-shadow:rgba(0, 0, 0, 0.15) 0px 0px 2px 2px;
@@ -82,7 +83,86 @@
 
   /* 사이드 바가 활성화 되었을 때 */
   #side-bar.active {
-    width:200px;
+    width:450px;
+  }
+
+  /* 사이드바의 상단 메뉴 */
+  #side-bar .menu {
+    position:absolute;
+    top:100px;
+    right:100%;
+    /* 이 설정에 의해서 사이드 바의 상단 메뉴가 뒤늦게 따라오는 느낌을 준다. */
+    transition: right 0.3s;
+  }
+  /* 활성화 된 사이드 바의 상단 메뉴 */
+  #side-bar.active .menu {
+    /* 사이드바가 활성화 되면 메뉴가 노출 된다. */
+    left:10%;
+    font-size: 3em;
+  }
+  /* 사이드바 상단메뉴의 2차 메뉴 */
+  #side-bar .menu > ul > li > ul {
+    padding-left:20px;
+  }
+  /* 사이드바 상단메뉴아이템 텍스트 */
+  #side-bar .menu li > a {
+    display:block;
+    /* 줄바꿈 안되게 하려고 */
+    white-space:nowrap;
+    transition:color 0.5s;
+  }
+  /* 사이드바 상단메뉴아이템 텍스트에 마우스 올렸을 때 */
+  #side-bar .menu li > a:hover {
+    color:black;
+  }
+  /* 하단 메뉴 */
+  #side-bar .bottom-menu {
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+  }
+
+  /* 하단 메뉴의 메뉴아이템 */
+  #side-bar .bottom-menu li {
+    padding-left:10px;
+    transition: padding-left 0.3s;
+  }
+
+  /* 활성화 된 사이드바의 하단 메뉴아이템 */
+  #side-bar.active .bottom-menu li {
+    padding-left:20px;
+  }
+
+  /* 사이드바의 하단 메뉴아이템 텍스트 */
+  #side-bar .bottom-menu li > a {
+    display:block;
+    white-space:nowrap;
+  }
+
+  /* 사이드바의 하단 메뉴아이템 텍스트의 아이콘 부분 */
+  #side-bar .bottom-menu li > a > i {
+    font-size:30px;
+    /* 아래와 같이 해야 아이콘만 정렬 할 수 있다. */
+    /* 아래와 같이 해야 하는 이유는 아이콘 마다 너비가 다르기 때문이다. */
+    display:inline-block;
+    width:30px;
+    text-align:center;
+  }
+
+  /* 사이드바의 하단 메뉴아이템 텍스트의 아이콘 제외 부분 */
+  #side-bar .bottom-menu li > a > span {
+    text-transform:uppercase;
+    visibility:hidden;
+    /* 사라질 때는 바로 사라지고 */
+    transition: visibility 0s 0s;
+  }
+
+  /* 활성화 된 사이드바의 하단 메뉴아이템 텍스트의 아이콘 제외 부분 */
+  #side-bar.active .bottom-menu li > a > span {
+    visibility:visible;
+    /* 나타날 때는 0.2s 초 뜸을 들인 후에 나타남 */
+    transition: visibility 0s 0.2s;
   }
 
 </style>
@@ -147,4 +227,42 @@
     <div></div>
     <div></div>
   </span>
+
+  <div class="logo">
+    <nav class="menu">
+
+      <ul>
+        <li>
+          <a href="#" style="font-weight: bold;">My Wod</a>
+          <ul>
+            <li><a href="#">Today</a></li>
+            <li><a href="#">History</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" style="font-weight: bold;">Communication</a>
+          <ul>
+            <li><a href="#">Timeline</a></li>
+            <li><a href="#">Friends</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" style="font-weight: bold;">Box</a>
+          <ul>
+            <li><a href="#">Drop In</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" style="font-weight: bold;">Store</a>
+          <ul>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Acc</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
 </div>
