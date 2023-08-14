@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<style>
+  .ico.ico-bars {
+    margin:5px;
+    display: block;
+    width: 40px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .ico.ico-bars > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: white;
+    transition: top 0.2s, bottom 0.2s, transform 0.3s cubic-bezier(0.585, -0.6, 0.43, 1.65), visibility 0s .3s;
+  }
+
+  .ico.ico-bars > div:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .ico.ico-bars > div:last-child {
+    top: auto;
+    bottom: 0;
+    transform-origin: bottom left;
+  }
+
+  .ico.ico-bars:hover div:first-child {
+    top: -2px;
+  }
+
+  .ico.ico-bars:hover div:last-child {
+    bottom: -2px;
+  }
+
+  /* 처음 녀석 */
+  .ico.ico-bars > div:first-child {
+    transform-origin: top left;
+  }
+
+  .ico.ico-bars.active div:first-child {
+    margin-left: 7px;
+    top: -2px;
+    transform: rotate(50deg);
+  }
+
+  .ico.ico-bars.active div:last-child {
+    margin-left: 7px;
+    bottom: -2px;
+    transform: rotate(-50deg);
+  }
+
+  .ico.ico-bars.active div:nth-child(2) {
+    visibility: hidden;
+    transition: visibility 0s 0s;
+  }
+
+
+  #side-bar {
+    z-index:3;
+    /* 드래그 못 하도록 처리 */
+    user-select: none;
+    position:fixed;
+    top:0;
+    left:0px;
+    width:50px;
+    height:100%;
+    background-color:#7AC3CC;
+    box-shadow:rgba(0, 0, 0, 0.15) 0px 0px 2px 2px;
+    transition: width 0.2s;
+    color:white;
+    /* 이게 있어야 화면 높이가 줄었을 경우에도 레이아웃이 깨지지 않는다. */
+    min-height:400px;
+  }
+
+  /* 사이드 바가 활성화 되었을 때 */
+  #side-bar.active {
+    width:200px;
+  }
+
+</style>
+
+<script>
+
+  $(document).ready(() => {
+
+    $('.toggle-side-bar-btn').click((e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      toggleSideBar();
+    });
+
+  });
+
+  let toggleSideBar = () => {
+
+    let $sideBar = $('#side-bar');
+    if ( $sideBar.hasClass('active') ) {
+      hideSideBar();
+    } else {
+      showSideBar();
+    }
+
+  }
+
+  let showSideBar = () => {
+
+    let $sideBar = $('#side-bar');
+    let $toggleSideBarBtn = $('.toggle-side-bar-btn');
+    if( $sideBar.hasClass('active') == false){
+      $sideBar.addClass('active');
+    }
+    if( $toggleSideBarBtn.hasClass('active') == false) {
+      $toggleSideBarBtn.addClass('active');
+    }
+
+  }
+
+  let hideSideBar = () => {
+
+    let $sideBar = $('#side-bar');
+    let $toggleSideBarBtn = $('.toggle-side-bar-btn');
+
+    if ( $sideBar.hasClass('active') ) {
+      $sideBar.removeClass('active');
+    }
+
+    if ( $toggleSideBarBtn.hasClass('active') ) {
+      $toggleSideBarBtn.removeClass('active');
+    }
+
+  }
+
+</script>
+
+<div id="side-bar" th:fragment="side">
+  <span class="ico ico-bars toggle-side-bar-btn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </span>
+</div>

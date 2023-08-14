@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header}"></head>
+
+<script>
+    $(document).ready( () => {
+
+    });
+</script>
+
+<body>
+    <div id="main-wrap">
+        <div id="side-bar-area">
+            <div th:replace="~{fragments/side}"></div>
+        </div>
+        <div id="main-cont-area">
+            <div th:replace="~{fragments/mainHeader}"></div>
+            <div th:replace="~{fragments/wod}"></div>
+            <div th:replace="~{fragments/footer}"></div>
+        </div>
+    </div>
+</body>
+</html>
