@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+    #sign-up {
+        width: 700px;
+        height: 1000px;
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .input-default {
+        width: 300px;
+        height: 100px;
+        font-size: 75px;
+    }
+    .input-radio-default {
+        width: 41px;
+        height: 41px;
+    }
+
+    .btn-default {
+        font-size: 4em;
+    }
+</style>
+
+<script>
+
+    $(document).ready(() => {
+        $('#signUpBtn').click(() => {
+            let userId = $('#userId').val();
+            let userPw = $('#userPw').val();
+            let userName = $('#userName').val();
+            let userBirth = $('#userBirth').val();
+            let userGender = $('input:radio[name="gender"]:checked').val();
+
+            console.log(userId);
+            console.log(userPw);
+            console.log(userName);
+            console.log(userBirth);
+            console.log(userGender);
+
+        });
+
+        $('#sign-up-close').click(() => {
+            $('#sign-up').css('display', 'none');
+            $('#main-popup-area').css('display', 'none');
+        });
+    });
+
+</script>
+
+<div id="sign-up" th:fragment="signUp">
+
+    <div>
+        <span>회원가입</span>
+    </div>
+    <div>
+        <span>ID </span>
+        <span><input id="userId" type="text" name="id" class="input-default"></span>
+        <span><button>중복확인</button></span>
+    </div>
+    <div>
+        <span>PW </span>
+        <span><input id="userPw" type="text" name="pw" class="input-default"></span>
+    </div>
+    <div>
+        <span>이름 </span>
+        <span><input id="userName" type="text" name="name" class="input-default"></span>
+    </div>
+    <div>
+        <span>생년월일</span>
+        <span><input id="userBirth" type="text" name="birth" placeholder="ex)901010" class="input-default"></span>
+    </div>
+    <div>
+        <span>성별</span>
+        <span>
+            <label><input type="radio" name="gender" value="m" class="input-radio-default">남</label>
+            <label><input type="radio" name="gender" value="f" class="input-radio-default">여</label>
+        </span>
+    </div>
+    <div>
+        <span>
+            <button id="sign-up-close" class="btn-default">닫기</button>
+            <button id="signUpBtn" class="btn-default">가입</button>
+        </span>
+    </div>
+</div>

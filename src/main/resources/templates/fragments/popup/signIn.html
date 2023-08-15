@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+    #sign-in {
+        width: 700px;
+        height: 1000px;
+        background-color: rgb(255, 255, 255);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .input-default {
+        width: 300px;
+        height: 100px;
+        font-size: 75px;
+    }
+
+    .btn-default {
+        font-size: 4em;
+    }
+</style>
+
+<script>
+
+    $(document).ready(() => {
+        $('#signInBtn').click(() => {
+            let userId = $('#userId').val();
+            let userPw = $('#userPw').val();
+
+            console.log(userId);
+            console.log(userPw);
+        });
+
+        $('#sign-in-close').click(() => {
+            $('#sign-in').css('display', 'none');
+            $('#main-popup-area').css('display', 'none');
+        });
+    });
+
+</script>
+
+<div id="sign-in" th:fragment="signIn">
+
+    <div>
+        <span>로그인</span>
+    </div>
+    <div>
+        <span>ID </span>
+        <span><input id="userId" type="text" name="id" class="input-default"></span>
+        <span><button>중복확인</button></span>
+    </div>
+    <div>
+        <span>PW </span>
+        <span><input id="userPw" type="text" name="pw" class="input-default"></span>
+    </div>
+    <div>
+        <span>
+            <button id="sign-in-close" class="btn-default">닫기</button>
+            <button id="signInBtn" class="btn-default">로그인</button>
+        </span>
+    </div>
+</div>

@@ -1,2 +1,6 @@
 server:
   port: 9191
+
+jwt:
+  secret: c3ByaW5nLWJvb3QtY29tLmV4YW1wbGUuc3ByaW5nYm9vdHNlY3VyaXR5and0Lmp3dC10dXRvcmlhbC1zZWNyZXQK
+  token-validity-in-seconds: 86400
