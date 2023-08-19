@@ -9,7 +9,8 @@ body { font-family: 'Noto Sans KR', san-serif;}
 html, body {
     width: 100%;
     height: 100%;
-    min-height: 400px;
+    background-color: #EFF3F4;
+    color: #333132;
 }
 
 #main-wrap {
@@ -17,46 +18,47 @@ html, body {
     height: 100%;
 }
 
-#side-bar-area {
-    width: 80px;
-    height: 100%;
-    float:left;
-}
-
 #main-cont-area {
-    width: calc(100% - 80px);
+    width: 100%;
     height: 100%;
-    float:left;
 }
 
 #main-header {
     width: 100%;
-    height: 300px;
-    background-color: #F88837;
+    height: 170px;
+    position: relative;
+    border-bottom-left-radius: 27px;
+    border-bottom-right-radius: 27px;
+    box-shadow: 0px 3px 10px -13px;
+    background-color: rgb(255, 255, 255);
 }
 
 #main-wod {
     width: 100%;
-    height: calc(100% - 300px - 200px);
+    height: calc(100% - 170px - 60px);
+    background-color:#EFF3F4;
 }
 
 #main-footer {
+    position:absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 200px;
-    background-color: gray;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    box-shadow: 0px 13px 12px 1px;
 }
 
 #main-popup-area {
     display: none;
     position:absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 100;
 }
 
-#main-wrap::after {
-    content: '';
-    display: block;
-    clear: both;
-}

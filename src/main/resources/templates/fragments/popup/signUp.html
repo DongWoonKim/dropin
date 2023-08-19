@@ -2,27 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <style>
     #sign-up {
-        width: 700px;
-        height: 1000px;
+        box-sizing: border-box;
+        padding: 10px;
+        display: none;
         background-color: rgb(255, 255, 255);
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    #signUpLogoArea {
+        width: 100%;
+        height: 30%;
+        position: relative;
+        border-radius: 25px;
+        box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.25);
+    }
+    #signUpLogo {
+        font-weight: bold;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-
-    .input-default {
-        width: 300px;
-        height: 100px;
-        font-size: 75px;
+    #signUpClose {
+        position: absolute;
+        right: 2%;
+        top: 2%;
     }
-    .input-radio-default {
-        width: 41px;
-        height: 41px;
+    .sign-up-input {
+        font-size: 2em;
+        background: transparent;
+        font-size: 2em;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: solid 3px #E6E7E8;
     }
-
-    .btn-default {
-        font-size: 4em;
+    .sign-up-margin-top {
+        margin-top: 20px;
+    }
+    .sign-up-input:focus {
+        outline: none;
+    }
+    .sign-up-input::placeholder {
+        color: #A6A6A6;
+    }
+    .sign-up-btn {
+        display: inline-block;
+        border: solid 1px;
+        width: 120px;
+        height: 50px;
+        line-height: 50px;
+        border-radius: 10px;
+        font-size: 2em;
     }
 </style>
 
@@ -30,8 +62,8 @@
 
     $(document).ready(() => {
         $('#signUpBtn').click(() => {
-            let userId = $('#userId').val();
-            let userPw = $('#userPw').val();
+            let userId = $('#signUpUserId').val();
+            let userPw = $('#signUpUserPw').val();
             let userName = $('#userName').val();
             let userBirth = $('#userBirth').val();
             let userGender = $('input:radio[name="gender"]:checked').val();
@@ -44,7 +76,7 @@
 
         });
 
-        $('#sign-up-close').click(() => {
+        $('#signUpClose').click(() => {
             $('#sign-up').css('display', 'none');
             $('#main-popup-area').css('display', 'none');
         });
@@ -54,37 +86,46 @@
 
 <div id="sign-up" th:fragment="signUp">
 
-    <div>
-        <span>회원가입</span>
+    <div id="signUpLogoArea">
+        <span id="signUpLogo">
+            <i style="display: block; font-size: 2em;" class="fa-solid fa-quote-left"></i>
+            <span style="display:inline-block; font-size: 4em; margin-top: 10px; ">드랍인</span>
+            <i style="display: block; font-size: 2em;" class="fa-solid fa-quote-right"></i>
+        </span>
+        <span id="signUpClose" style="font-size: 2em;">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
     </div>
-    <div>
-        <span>ID </span>
-        <span><input id="userId" type="text" name="id" class="input-default"></span>
-        <span><button>중복확인</button></span>
+    <div class="sign-up-margin-top">
+        <span>
+            <input id="signUpUserId" type="text" name="id" class="input-default sign-up-input" placeholder="ID를 입력하세요.">
+        </span>
+        <span>
+            <button>중복확인</button>
+        </span>
     </div>
-    <div>
-        <span>PW </span>
-        <span><input id="userPw" type="text" name="pw" class="input-default"></span>
+    <div class="sign-up-margin-top">
+        <span><input id="signUpUserPw" type="password" name="pw" class="input-default sign-up-input" placeholder="비밀번호를 입력하세요."></span>
     </div>
-    <div>
-        <span>이름 </span>
-        <span><input id="userName" type="text" name="name" class="input-default"></span>
+    <div class="sign-up-margin-top">
+        <span><input type="password" name="pw" class="input-default sign-up-input" placeholder="비밀번호를 확인."></span>
     </div>
-    <div>
-        <span>생년월일</span>
-        <span><input id="userBirth" type="text" name="birth" placeholder="ex)901010" class="input-default"></span>
+    <div class="sign-up-margin-top">
+        <span><input id="userName" type="text" name="name" placeholder="이름을 입력해주세요." class="input-default sign-up-input"></span>
     </div>
-    <div>
-        <span>성별</span>
+    <div class="sign-up-margin-top">
+        <span><input id="userBirth" type="text" name="birth" placeholder="생년월일 ex)911009" class="input-default sign-up-input"></span>
+    </div>
+    <div class="sign-up-margin-top">
         <span>
             <label><input type="radio" name="gender" value="m" class="input-radio-default">남</label>
             <label><input type="radio" name="gender" value="f" class="input-radio-default">여</label>
         </span>
     </div>
-    <div>
+    <div style="margin-top: 40px;">
         <span>
-            <button id="sign-up-close" class="btn-default">닫기</button>
-            <button id="signUpBtn" class="btn-default">가입</button>
+            <span id="signUpIni" class="sign-up-btn">초기화</span>
+            <span id="signUpBtn" class="sign-up-btn">가입</span>
         </span>
     </div>
 </div>

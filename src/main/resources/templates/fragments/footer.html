@@ -8,6 +8,17 @@
     }
 </style>
 
+<script>
+
+    $(document).ready(() => {
+        $('#signInBtn').click(() => {
+            $('#sign-in').css('display', 'block');
+            $('#main-popup-area').css('display', 'block');
+        });
+    })
+
+</script>
+
 <div id="main-footer" class="footer" th:fragment="footer">
-    <p>&copy; DongwoonKim</p>
+    <i id="signInBtn" class="fa-regular fa-user"></i>
 </div>

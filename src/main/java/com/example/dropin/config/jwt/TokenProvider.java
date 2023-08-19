@@ -14,6 +14,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
@@ -47,15 +50,19 @@ public class TokenProvider implements InitializingBean {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
-        long now = (new Date()).getTime();
-        Date validity = new Date(now + this.tokenValidityInMilliseconds);
+        LocalDateTime now = LocalDateTime.now();
 
         return Jwts.builder()
                 .setSubject(authentication.getName())
                 .claim(AUTHORITIES_KEY, authorities)
                 .signWith(key, SignatureAlgorithm.HS512)
-                .setExpiration(validity)
+                .setIssuedAt( LocalToDate(now.atZone(ZoneId.systemDefault()).toInstant()) )
+                .setExpiration( LocalToDate(now.plusMinutes(tokenValidityInMilliseconds).atZone(ZoneId.systemDefault()).toInstant()) )
                 .compact();
+    }
+
+    private Date LocalToDate(Instant localDateInstant ) {
+        return Date.from( localDateInstant );
     }
 
     public Authentication getAuthentication(String token) {

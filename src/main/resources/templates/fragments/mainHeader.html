@@ -3,42 +3,18 @@
 <style>
 
     #logo {
-        float: left;
-        font-size: 6em;
-        font-weight: bold;
-        margin-left: 10px;
-        margin-top: 10px;
-    }
-    #member {
-        float: right;
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 2em;
-        margin-right: 10px;
-        margin-top: 10px;
+        font-weight: bold;
     }
 
 </style>
 
-<script>
-
-    let signUpPop = () => {
-        $('#main-popup-area').css('display', 'block');
-        $('#sign-up').css('display', 'block');
-        $('#sign-in').css('display', 'none');
-    }
-
-    let signInPop = () => {
-        $('#main-popup-area').css('display', 'block');
-        $('#sign-up').css('display', 'none');
-        $('#sign-in').css('display', 'block');
-    }
-
-</script>
-
 <div id="main-header" th:fragment="mainHeader">
     <div id="logo">
-        <span>DROP !N</span>
-    </div>
-    <div id="member">
-        <button onclick="signInPop()" style="font-size: 2em;">로그인</button> / <button onclick="signUpPop()" style="font-size: 2em;">회원가입</button>
+        <span>드랍인</span>
     </div>
 </div>
