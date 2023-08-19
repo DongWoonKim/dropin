@@ -68,14 +68,8 @@
             let userBirth = $('#userBirth').val();
             let userGender = $('input:radio[name="gender"]:checked').val();
 
-            console.log(userId);
-            console.log(userPw);
-            console.log(userName);
-            console.log(userBirth);
-            console.log(userGender);
-
             $.ajax({
-                url : '/member',
+                url : '/member/join',
                 type : 'post',
                 contentType: 'application/json',
                 data : JSON.stringify({
@@ -83,21 +77,31 @@
                     'userPw' : userPw,
                     'userName' : userName,
                     'birth' : userBirth,
-                    'gender' : userGender,
-                    'userRole' : 'ROLE_COMMON'
+                    'gender' : userGender
                 }),
                 success: (data) => {
                     console.log('succ :: ', data);
+                    if (data) {
+                        alert('가입이 완료되었습니다. 다시한번 로그인해주세요!');
+                        closeSignUpPage();
+                    } else {
+                        alert('가입이 실패되었습니다. 잠시후 다시 시도해주세요.');
+                        closeSignUpPage()
+                    }
                 }
             });
 
         });
 
         $('#signUpClose').click(() => {
-            $('#sign-up').css('display', 'none');
-            $('#main-popup-area').css('display', 'none');
+            closeSignUpPage();
         });
     });
+
+    let closeSignUpPage = () => {
+        $('#sign-up').css('display', 'none');
+        $('#main-popup-area').css('display', 'none');
+    }
 
 </script>
 

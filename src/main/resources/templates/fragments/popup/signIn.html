@@ -65,12 +65,24 @@
 
     $(document).ready(() => {
         $('#signInBtn').click(() => {
-            alert('hi')
             let userId = $('#signInUserId').val();
             let userPw = $('#signInUserPw').val();
 
             console.log(userId);
             console.log(userPw);
+
+            $.ajax({
+                url : '/member',
+                type : 'post',
+                contentType: 'application/json',
+                data : JSON.stringify({
+                    'userId' : userId,
+                    'userPw' : userPw,
+                    'userRole' : 'ROLE_COMMON'
+                }),
+                success: (data) => {
+                }
+            });
         });
 
         $('#signInClose').click(() => {
