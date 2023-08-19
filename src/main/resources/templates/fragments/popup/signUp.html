@@ -74,6 +74,23 @@
             console.log(userBirth);
             console.log(userGender);
 
+            $.ajax({
+                url : '/member',
+                type : 'post',
+                contentType: 'application/json',
+                data : JSON.stringify({
+                    'userId' : userId,
+                    'userPw' : userPw,
+                    'userName' : userName,
+                    'birth' : userBirth,
+                    'gender' : userGender,
+                    'userRole' : 'ROLE_COMMON'
+                }),
+                success: (data) => {
+                    console.log('succ :: ', data);
+                }
+            });
+
         });
 
         $('#signUpClose').click(() => {
