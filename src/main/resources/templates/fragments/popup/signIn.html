@@ -11,13 +11,16 @@
         text-align: center;
     }
     #signInLogoArea {
-        width: 100%;
+        margin: 0 auto;
+        width: 576px;
         height: 30%;
         position: relative;
         border-radius: 25px;
         box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.25);
     }
     #signInLogo {
+        width: 50%;
+        height: 50%;
         font-weight: bold;
         position: absolute;
         top: 50%;
@@ -81,6 +84,7 @@
                     'userRole' : 'ROLE_COMMON'
                 }),
                 success: (data) => {
+                    console.log('data data :: ', data);
                 }
             });
         });
@@ -108,9 +112,10 @@
 
     <div id="signInLogoArea">
         <span id="signInLogo">
-            <i style="display: block; font-size: 2em;" class="fa-solid fa-quote-left"></i>
-            <span style="display:inline-block; font-size: 4em; margin-top: 10px; ">드랍인</span>
-            <i style="display: block; font-size: 2em;" class="fa-solid fa-quote-right"></i>
+            <img src="/images/dropin_logo.jpeg" alt="" style="width: 100%; height: 100%;">
+<!--            <i style="display: block; font-size: 2em;" class="fa-solid fa-quote-left"></i>-->
+<!--            <span style="display:inline-block; font-size: 4em; margin-top: 10px; ">드랍인</span>-->
+<!--            <i style="display: block; font-size: 2em;" class="fa-solid fa-quote-right"></i>-->
         </span>
         <span id="signInClose" style="font-size: 2em;">
             <i class="fa-solid fa-xmark"></i>

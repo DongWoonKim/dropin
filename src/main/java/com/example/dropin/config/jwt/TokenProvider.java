@@ -50,12 +50,14 @@ public class TokenProvider implements InitializingBean {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
+        System.out.println("authorities :: " + authorities);
+
         LocalDateTime now = LocalDateTime.now();
 
         return Jwts.builder()
                 .setSubject(authentication.getName())
                 .claim(AUTHORITIES_KEY, authorities)
-                .signWith(key, SignatureAlgorithm.HS512)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .setIssuedAt( LocalToDate(now.atZone(ZoneId.systemDefault()).toInstant()) )
                 .setExpiration( LocalToDate(now.plusMinutes(tokenValidityInMilliseconds).atZone(ZoneId.systemDefault()).toInstant()) )
                 .compact();

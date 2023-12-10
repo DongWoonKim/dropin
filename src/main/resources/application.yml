@@ -1,6 +1,21 @@
 server:
   port: 9191
 
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://database-kdw-instance-1.cl3rznnh4jde.ap-northeast-2.rds.amazonaws.com:3306/dropin?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: admin
+    password: DongunKim91
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 100
+        dialect: org.hibernate.dialect.MySQLDialect
 
 jwt:
   secret: c3ByaW5nLWJvb3QtY29tLmV4YW1wbGUuc3ByaW5nYm9vdHNlY3VyaXR5and0Lmp3dC10dXRvcmlhbC1zZWNyZXQK

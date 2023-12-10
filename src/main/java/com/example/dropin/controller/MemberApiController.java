@@ -3,7 +3,6 @@ package com.example.dropin.controller;
 import com.example.dropin.dto.SignInRequestDTO;
 import com.example.dropin.dto.SignInResponseDTO;
 import com.example.dropin.dto.SignUpRequestDTO;
-import com.example.dropin.service.SignIn;
 import com.example.dropin.service.impl.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
